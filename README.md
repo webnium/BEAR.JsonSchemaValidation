@@ -13,7 +13,6 @@ Validation process is below:
 1. Retrieve schema definition specifed via `$ro->links['describedBy']`.
 2. If schema does not have `link` property or has empty link property, do nothing.
 3. Search an element of `link` property under constraint that `rel` property is  "self" and `method` property is called REST method(eg. `GET` when invocated method is `onGet`).
-A
 4. If found a link element, validate invocation arguments with `schema` property of it.
 5. If not found, search a link element unser constraint that `rel` property is "self" and without `method` property.
 6. If found that, validate invocation arguments with `schema` property of it.
