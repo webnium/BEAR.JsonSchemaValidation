@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="tests/bootstrap.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         stopOnError="false"
+         stopOnFailure="false"
+         verbose="true">
+    <testsuites>
+        <testsuite name="BEAR.JsonSchemaValidation">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-html" target="build/coverage" title="BEAR.JsonSchemaValidation" charset="UTF-8" yui="true"
+             highlight="true" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+    </logging>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src/Webnium/BEAR/JsonSchemaValidation</directory>
+            <exclude>
+                <directory suffix="Module.php">src/Webnium/BEAR/JsonSchemaValidation</directory>
+                <directory suffix="Provider.php">src/Webnium/BEAR/JsonSchemaValidation</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
