@@ -10,14 +10,14 @@ Then this validator intercepts ResourceObject methods annotated with `@Validate`
 
 Validation process is below:
 
-+ Retrieve schema definition specifed via `$ro->links['describedBy']`.
-+ If schema does not have `link` property or has empty link property, do nothing.
-+ Search an element of `link` property under constraint that `rel` property is  "self" and `method` property is called REST method(eg. `GET` when invocated method is `onGet`).
+1. Retrieve schema definition specifed via `$ro->links['describedBy']`.
+2. If schema does not have `link` property or has empty link property, do nothing.
+3. + Search an element of `link` property under constraint that `rel` property is  "self" and `method` property is called REST method(eg. `GET` when invocated method is `onGet`).
 A
-+ If found a link element, validate invocation arguments with `schema` property of it.
-+ If not found, search a link element unser constraint that `rel` property is "self" and without `method` property.
-+ If found that, validate invocation arguments with `schema` property of it.
-+ If not found again, do nothing.
+4. + If found a link element, validate invocation arguments with `schema` property of it.
+5. + If not found, search a link element unser constraint that `rel` property is "self" and without `method` property.
+6. + If found that, validate invocation arguments with `schema` property of it.
+7. + If not found again, do nothing.
 
 License
 -------
