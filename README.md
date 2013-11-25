@@ -1,6 +1,9 @@
 BEAR.JsonSchmaValidation
 ========================
+[![Build Status](https://travis-ci.org/webnium/BEAR.JsonSchemaValidation.png?branch=master)](https://travis-ci.org/webnium/BEAR.JsonSchemaValidation)
 
+Overview
+--------
 Validation with json schema for BEAR Resource 
 
 Usage
