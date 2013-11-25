@@ -13,6 +13,7 @@ use Ray\Aop\MethodInvocation;
 use Ray\Aop\MethodInterceptor;
 use JsonSchema\Uri\UriRetriever;
 use JsonSchema\Validator as JsonValidator;
+use Webnium\BEAR\JsonSchemaValidation\Exception;
 
 /**
  * Validator for BEAR ResourceObjects
@@ -56,7 +57,10 @@ class JsonSchemaValidator implements MethodInterceptor
     {
         $ro = $invocation->getThis();
 
-        preg_match('/^on(.+)$/', $invocation->getMethod()->name, $matches);
+        if (!preg_match('/^on(.+)$/', $invocation->getMethod()->name, $matches)) {
+            throw new Exception\InvalidBinding;
+        }
+
         $method = strtolower($matches[1]);
 
         $schema = $this->retrieveSchemaForMethod($ro, $method);

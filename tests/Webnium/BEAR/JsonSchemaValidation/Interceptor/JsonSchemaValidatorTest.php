@@ -116,4 +116,16 @@ class JsonSchemaValidatorTest extends TestCase
 
         Phake::verify($this->invocation)->proceed();
     }
+
+    /**
+     * @test
+     *
+     * @expectedException Webnium\BEAR\JsonSchemaValidation\Exception\InvalidBinding
+     */
+    public function shouldThrowInvalidBindingExceptionWhenInvocatedMethodIsNotAHttpVerbMethod()
+    {
+        Phake::when($this->invocation)->getMethod()->thenReturn(new ReflectionMethod('Webnium\BEAR\JsonSchemaValidation\Interceptor\Resource\Mock', 'hello'));
+
+        $this->validator->invoke($this->invocation);
+    }
 }

@@ -29,4 +29,14 @@ class Mock extends ResourceObject
     {
         return $this;
     }
+
+    /**
+     * none http verb method
+     *
+     * @return string
+     */
+    public function hello()
+    {
+        return 'world';
+    }
 }
