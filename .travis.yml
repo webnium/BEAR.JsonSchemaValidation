@@ -4,6 +4,4 @@ php:
   - 5.4
 
 before_script:
-  - printf "\n" | pecl install apcu-beta
-  - echo "extension = apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer install
