@@ -11,6 +11,10 @@
     },
     "links": [
         {
+            "rel": "parent",
+            "href": "/parent/"
+        },
+        {
             "rel": "self",
             "encType": "application/x-www-form-urlencoded",
             "schema": {
