@@ -36,7 +36,7 @@ class JsonSchemaValidator implements MethodInterceptor
     /**
      * Inject NamedArgs
      *
-     * @param NamedArgsInterface
+     * @param NamedArgsInterface $namedArgs
      * @Inject
      */
     public function setNamedArgs(NamedArgsInterface $namedArgs)
@@ -58,7 +58,7 @@ class JsonSchemaValidator implements MethodInterceptor
     /**
      * Inject Json Validator
      *
-     * @param JsonValidator
+     * @param JsonValidator $validator
      * @Inject
      */
     public function setValidator(JsonValidator $validator)
