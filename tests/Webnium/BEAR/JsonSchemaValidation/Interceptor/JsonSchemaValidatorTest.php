@@ -39,13 +39,17 @@ class JsonSchemaValidatorTest extends TestCase
         $this->ro = new Resource\Mock;
 
         $this->invocation = Phake::mock('Ray\Aop\MethodInvocation');
+        $this->namedArgs = Phake::mock('Ray\Aop\NamedArgs');
 
         Phake::when($this->invocation)->getThis()->thenReturn($this->ro);
         Phake::when($this->invocation)->proceed()->thenReturn($this->ro);
         Phake::when($this->invocation)->getArguments()->thenReturn([]);
         Phake::when($this->invocation)->getMethod()->thenReturn(new ReflectionMethod('Webnium\BEAR\JsonSchemaValidation\Interceptor\Resource\Mock', 'onPost'));
 
+        Phake::when($this->namedArgs)->get($this->invocation)->thenReturn([]);
+
         $this->validator = new JsonSchemaValidator;
+        $this->validator->setNamedArgs($this->namedArgs);
         $this->validator->setRetriever(new UriRetriever);
         $this->validator->setValidator(new JsonValidator);
     }
@@ -101,7 +105,7 @@ class JsonSchemaValidatorTest extends TestCase
      */
     public function callProceedWhenArgumentsAreValid()
     {
-        Phake::when($this->invocation)->getArguments()->thenReturn([
+        Phake::when($this->namedArgs)->get($this->invocation)->thenReturn([
             'name' => 'efaljfal',
             'option' => 'fugafu',
             'number' => 5
@@ -118,7 +122,7 @@ class JsonSchemaValidatorTest extends TestCase
     public function validateWithSchemaInLinkWithoutMethodWhenSpecifiedMethodSchemaDoesNotExist()
     {
         Phake::when($this->invocation)->getMethod()->thenReturn(new ReflectionMethod('Webnium\BEAR\JsonSchemaValidation\Interceptor\Resource\Mock', 'onGet'));
-        Phake::when($this->invocation)->getArguments()->thenReturn([
+        Phake::when($this->namedArgs)->get($this->invocation)->thenReturn([
             'name' => 'felfef'
         ]);
 

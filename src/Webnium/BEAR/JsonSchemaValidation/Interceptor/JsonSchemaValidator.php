@@ -12,6 +12,7 @@ use BEAR\Resource\Link;
 use BEAR\Resource\Code;
 use Ray\Aop\MethodInvocation;
 use Ray\Aop\MethodInterceptor;
+use Ray\Aop\NamedArgsInterface;
 use Ray\Di\Di\Inject;
 use JsonSchema\Uri\UriRetriever;
 use JsonSchema\Validator as JsonValidator;
@@ -28,6 +29,20 @@ class JsonSchemaValidator implements MethodInterceptor
 
     /** @var JsonValidator */
     private $validator;
+
+    /** @var NamedArgsInterface */
+    private $namedArgs;
+
+    /**
+     * Inject NamedArgs
+     *
+     * @param NamedArgsInterface
+     * @Inject
+     */
+    public function setNamedArgs(NamedArgsInterface $namedArgs)
+    {
+        $this->namedArgs = $namedArgs;
+    }
 
     /**
      * Inject UriRetriever
@@ -70,7 +85,7 @@ class JsonSchemaValidator implements MethodInterceptor
             return $invocation->proceed();
         }
 
-        $this->validator->check((object)json_decode(json_encode($invocation->getArguments())), $schema);
+        $this->validator->check((object)json_decode(json_encode($this->namedArgs->get($invocation))), $schema);
 
         if ($this->validator->isValid()) {
             return $invocation->proceed();
