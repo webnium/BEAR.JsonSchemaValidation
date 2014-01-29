@@ -12,7 +12,7 @@ use Ray\Di\AbstractModule;
 /**
  * Webnium BEAR.JsonSchemaValidation validator module
  */
-class ValidatorModule extends AbstractModule
+class ValidationModule extends AbstractModule
 {
     /**
      * Configure aspect binding
