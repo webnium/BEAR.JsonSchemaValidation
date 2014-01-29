@@ -76,6 +76,16 @@ class JsonSchemaValidatorTest extends TestCase
     /**
      * @test
      */
+    public function returnedObjectHasCodeBadRequestWhenArgumentAreInvalid()
+    {
+        $ro = $this->validator->invoke($this->invocation);
+
+        $this->assertSame(400, $ro->code);
+    }
+
+    /**
+     * @test
+     */
     public function retiriveSchemaUsingDescribedByRelationOfTheResourceObject()
     {
         $retriever = Phake::mock('JsonSchema\Uri\UriRetriever');

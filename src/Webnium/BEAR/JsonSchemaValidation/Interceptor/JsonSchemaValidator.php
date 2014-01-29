@@ -9,6 +9,7 @@ namespace Webnium\BEAR\JsonSchemaValidation\Interceptor;
 
 use BEAR\Resource\ResourceObject;
 use BEAR\Resource\Link;
+use BEAR\Resource\Code;
 use Ray\Aop\MethodInvocation;
 use Ray\Aop\MethodInterceptor;
 use Ray\Di\Di\Inject;
@@ -75,6 +76,7 @@ class JsonSchemaValidator implements MethodInterceptor
             return $invocation->proceed();
         }
 
+        $ro->code = Code::BAD_REQUEST;
         $ro->body = ['errors' => $this->validator->getErrors()];
 
         return $ro;
