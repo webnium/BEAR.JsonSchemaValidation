@@ -23,7 +23,7 @@ class ValidationModule extends AbstractModule
         $validator = $this->requestInjection(__NAMESPACE__ . '\Interceptor\JsonSchemaValidator');
         $this->bindInterceptor(
             $this->matcher->subclassesOf('BEAR\Resource\ResourceObject'),
-            $this->matcher->annotatedWith('BEAR\Sunday\Annotaion\Validate'),
+            $this->matcher->annotatedWith('BEAR\Sunday\Annotation\Validate'),
             [$validator]
         );
     }
