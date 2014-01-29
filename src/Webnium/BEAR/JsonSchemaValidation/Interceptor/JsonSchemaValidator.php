@@ -11,6 +11,7 @@ use BEAR\Resource\ResourceObject;
 use BEAR\Resource\Link;
 use Ray\Aop\MethodInvocation;
 use Ray\Aop\MethodInterceptor;
+use Ray\Di\Di\Inject;
 use JsonSchema\Uri\UriRetriever;
 use JsonSchema\Validator as JsonValidator;
 use Webnium\BEAR\JsonSchemaValidation\Exception;
