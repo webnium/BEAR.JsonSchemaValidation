@@ -18,7 +18,7 @@ class ValidationModule extends AbstractModule
      * Configure aspect binding
      *
      */
-    protected function cofigure()
+    protected function configure()
     {
         $validator = $this->requestInjection(__NAMESPACE__ . '\Interceptor\JsonSchemaValidator');
         $this->bindInterceptor(
