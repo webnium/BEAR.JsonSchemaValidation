@@ -23,7 +23,7 @@ class ValidationModule extends AbstractModule
         $this->bind('Ray\Aop\NamedArgsInterface')
             ->to('Ray\Aop\NamedArgs');
 
-        $validator = $this->dependencyInjector->getInstance(__NAMESPACE__ . '\Interceptor\JsonSchemaValidator');
+        $validator = $this->requestInjection(__NAMESPACE__ . '\Interceptor\JsonSchemaValidator');
         $this->bindInterceptor(
             $this->matcher->subclassesOf('BEAR\Resource\ResourceObject'),
             $this->matcher->annotatedWith('BEAR\Sunday\Annotation\Validate'),
